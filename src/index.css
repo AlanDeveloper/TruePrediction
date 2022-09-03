@@ -10,6 +10,7 @@ header {
 }
 
 main {
+    color: #fff;
     display: flex;
     flex-direction: row;
 }
@@ -20,6 +21,7 @@ main > img {
 }
 
 main > div {
+    background-color: #7b9cb0;
     width: 50%;
     box-sizing: border-box;
 }
@@ -32,4 +34,29 @@ main > div input[type="text"] {
 main > div input[type="submit"] {
     width: 20%;
     padding: 10px;
+    cursor: pointer;
+}
+
+main #preview,
+main #result {
+    padding: 20px;
+}
+
+main #preview > div:first-child {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+main .option {
+    background-color: #10108f;
+    padding: 10px;
+    width: 100%;
+    color: white;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+main .nextDays {
+    margin-top: 20px;
 }
