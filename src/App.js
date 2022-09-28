@@ -11,6 +11,23 @@ function App() {
   const [preview, setPreview] = useState();
   const [userData, setUserData] = useState({});
 
+  useEffect(() => {
+    if (preview){
+      axios.post("http://localhost:8080/cities", {
+        nameCity: preview.city.name,
+        weatherId: preview.list[0].weather[0].id,
+        temperature: preview.list[0].main.temp,
+        temperature_min: preview.list[0].main.temp_min,
+        temperature_max: preview.list[0].main.temp_max,
+        pressure: preview.list[0].main.pressure,
+        humidity: preview.list[0].main.humidity,
+        windSpeed: preview.list[0].wind.speed,
+        pop: preview.list[0].pop,
+        feels_like: preview.list[0].main.feels_like
+      });
+    }
+  }, [preview]);
+
   const searchCity = (e) => {
     e.preventDefault();
 
@@ -48,17 +65,6 @@ function App() {
     let datestring = day + "/" + month + "/" + d.getFullYear() + " " + hours + ":" + minutes;
 
     return datestring;
-  }
-
-  const getHours = (date) => {
-    let d = new Date(date);
-
-    let hours = d.getHours();
-    hours = hours.toString().length === 1 ? `0${hours}` : hours;
-    let minutes = d.getMinutes();
-    minutes = minutes.toString().length === 1 ? `0${minutes}` : minutes;
-
-    return hours + ":" + minutes;
   }
 
   return (
