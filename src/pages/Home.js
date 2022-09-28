@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 import LineChart from '../components/LineChart';
 
 function Home() {
@@ -74,6 +75,7 @@ function Home() {
                         <input type="text" onChange={e => setName(e.target.value)} value={name} placeholder="Procure pelo nome" />
                         <input type="submit" value="Procurar" />
                     </form>
+                    <Link to="/cities">Ver resultados antigos</Link>
                     <div id="result">
                         {result.map((city, index) => {
                             return <div key={index} onClick={() => previewCity(city.lat, city.lon)} data-lat={city.lat} data-lng={city.lon}>
